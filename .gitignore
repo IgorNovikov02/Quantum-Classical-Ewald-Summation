@@ -32,7 +32,3 @@ ipython_config.py
 .DS_Store
 Thumbs.db
 
-# Local-only
-CLAUDE.md
-Prompt.md
-.claude/
