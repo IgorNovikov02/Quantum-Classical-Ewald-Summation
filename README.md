@@ -2,7 +2,7 @@
 
 A hybrid quantum–classical implementation of the Ewald summation for the
 electrostatic energy of a periodic 3D lattice of point charges. The
-long-range (reciprocal-space) term `E^L` is obtained via the quantum
+long-range (reciprocal-space) term $E^L$ is obtained via the quantum
 Fourier transform, while the remaining short-range, self-interaction, and
 dipole correction terms are computed classically. 
 
@@ -49,18 +49,18 @@ unless you intend to wait.
 The total energy is decomposed as
 
 ```
-E = E^L + E^S + E^self + E^dipole
+$E = E^L + E^S + E^self + E^dipole$
 ```
 
 with the following components:
 
 | Term         | Where computed                                  |
 |--------------|-------------------------------------------------|
-| `E^L`        | Reciprocal-space kernel applied to either a classical FFT (`fftn`) or the squared probability density read out of a quantum QFT circuit. |
-| `E^S`        | Real-space sum with `erfc` cutoff at `RCUT`, using a 3D cell list and `n` periodic image shells. |
-| `E^self`     | Closed-form self-interaction term (vectorized). |
-| `E^dipole`   | Surface (dipole) correction, with surrounding-medium permittivity `epsp`. |
-| `E_Coulomb`  | Direct `O(N²)` Coulomb sum over `m` image shells, used as ground truth. |
+| $E^L$        | Reciprocal-space kernel applied to either a classical FFT (`fftn`) or the squared probability density read out of a quantum QFT circuit. |
+| $E^S$        | Real-space sum with `erfc` cutoff at `RCUT`, using a 3D cell list and `n` periodic image shells. |
+| $E^self$     | Closed-form self-interaction term (vectorized). |
+| $E^dipole$   | Surface (dipole) correction, with surrounding-medium permittivity `epsp`. |
+| $E_Coulomb$  | Direct `O(N²)` Coulomb sum over `m` image shells, used as ground truth. |
 
 The quantum circuit places `D · log₂(M)` qubits (15 at `M = 32`) in three
 coordinate registers and applies a `QFT` to each.
